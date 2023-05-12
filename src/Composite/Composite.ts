@@ -1,12 +1,20 @@
 
-interface BorderQueueComponent {
-  getPeopleNumber(): number;
+export abstract class BorderQueueComponent {
+  abstract getPeopleNumber(): number;
+
+  add(child: BorderQueueComponent): void {};
+  remove(child: BorderQueueComponent): void {};
+
+  isComposite(): boolean {
+    return false;
+  }
 }
 
-class PeopleGroup implements BorderQueueComponent {
+export class PeopleGroup extends BorderQueueComponent {
   private peopleNumber: number;
 
   constructor(peopleNumber: number) {
+      super();
       this.peopleNumber = peopleNumber;
   }
 
@@ -15,11 +23,12 @@ class PeopleGroup implements BorderQueueComponent {
   }
 }
 
-class BusComposite implements BorderQueueComponent{
+export class BusComposite extends BorderQueueComponent{
 
     protected children: BorderQueueComponent[];
 
     constructor() {
+      super();
       this.children = [];
     }
 
@@ -32,6 +41,10 @@ class BusComposite implements BorderQueueComponent{
         if (index >= 0) {
             this.children.splice(index, 1);
         }
+    }
+
+    isComposite(): boolean {
+      return true;
     }
 
     getPeopleNumber(): number {

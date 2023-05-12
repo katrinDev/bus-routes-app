@@ -10,8 +10,17 @@
       "departurePlatform": "5",
       "arrivalStation": "Paris City Bus Terminal",
       "ticketPrice": 25.99,
-      "busBrand": "Mercedes",
-      "travelTime": "4 hours"
+      "busBrand": "Megabus",
+      "travelTime": "4 hours",
+      "orders": [
+        {
+          "doubleDecker": 5,
+          "singleDecker": 2
+        },
+        {
+          "doubleDecker": 1
+        }
+      ]
     },
     {
       "id": 2,
@@ -23,8 +32,14 @@
       "departurePlatform": "3",
       "arrivalStation": "Madrid Estación del Sur",
       "ticketPrice": 35.5,
-      "busBrand": "Volvo",
-      "travelTime": "7 hours"
+      "busBrand": "Scania",
+      "travelTime": "7 hours",
+      "orders": [
+        {
+          "doubleDecker": 1,
+          "singleDecker": 4
+        }
+      ]
     },
     {
       "id": 3,
@@ -50,7 +65,17 @@
       "arrivalStation": "Berlin Zentraler ",
       "ticketPrice": 30.75,
       "busBrand": "Scania",
-      "travelTime": "8 hours"
+      "travelTime": "8 hours",
+      "orders": [
+        {
+          "doubleDecker": 1,
+          "singleDecker": 3
+        },
+        {
+          "doubleDecker": 4,
+          "singleDecker": 2
+        }
+      ]
     },
     {
       "id": 5,
@@ -88,7 +113,7 @@
       "departurePlatform": "1",
       "arrivalStation": "Vienna Busterminal",
       "ticketPrice": 32.0,
-      "busBrand": "Neoplan",
+      "busBrand": "Scania",
       "travelTime": "11 hours"
       },
       {
@@ -101,7 +126,7 @@
       "departurePlatform": "7",
       "arrivalStation": "Prague Florenc",
       "ticketPrice": 27.5,
-      "busBrand": "Irizar",
+      "busBrand": "MAN",
       "travelTime": "5 hours"
       },
       {

@@ -1,5 +1,5 @@
 import React from "react";
-import MyNavbar from "./AdminNavbar";
+import MyNavbar from "./MyNavbar";
 
 export default function Layout({ children }) {
 
