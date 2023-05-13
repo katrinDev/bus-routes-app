@@ -1,21 +1,23 @@
+import { useState } from "react";
+import BusTable from "./components/BusTable";
 import Layout from "./components/Layout";
-import MyTable from "./components/MyTable";
 import "./styles/App.css";
+import { DataContext } from "./context/context";
 
 function App() {
   const [data, setData] = useState([]);
 
   return (
-    <AuthContext.Provider
+    <DataContext.Provider
       value={{
         data,
         setData,
       }}
     >
       <Layout>
-        <MyTable/>
+        <BusTable/>
       </Layout>
-    </AuthContext.Provider>
+    </DataContext.Provider>
   );
 }
 

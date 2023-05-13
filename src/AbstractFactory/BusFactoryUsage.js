@@ -1,25 +1,20 @@
-import { useContext } from "react";
-import { DataContext } from "../context/context";
-import {
-  ScaniaFactory,
-  MegabusFactory,
-} from "./BusFactory";
-import { PeopleGroup } from "../Composite/Composite";
+import { ScaniaFactory, MegabusFactory } from "./BusFactory.ts";
+import { PeopleGroup } from "../Composite/Composite.ts";
 
-function BusFactoryUsage() {
-  const { data } = useContext(DataContext);
+export function busFactoryUsage(data) {
 
   const routesWithOrders = data.filter((obj) => obj.hasOwnProperty("orders"));
 
-  const [ordersData, setOrdersData] = useState([]);
-  const [singleDeckerOrdersInfo, setSingleDeckerOrdersInfo] = useState({
+  let ordersData = [];
+  let singleDeckerOrdersInfo = {
     peopleAmount: 0,
     profit: 0,
-  });
-  const [doubleDeckerOrdersInfo, setDoubleDeckerOrdersInfo] = useState({
+  };
+
+  let doubleDeckerOrdersInfo = {
     peopleAmount: 0,
     profit: 0,
-  });
+  };
 
   for (let route of routesWithOrders) {
     let factory;
@@ -34,13 +29,13 @@ function BusFactoryUsage() {
       }
       default: {
         factory = null;
-        console.log("Empty bus brand field");
-        break;
+        return null;
       }
     }
 
-    const doubleDecker = factory?.createDoubleDecker();
-    const singleDecker = factory?.createSingleDecker();
+    console.log(route.ticketPrice);
+    const doubleDecker = factory.createDoubleDecker(route.ticketPrice);
+    const singleDecker = factory.createSingleDecker(route.ticketPrice);
 
     route.orders.forEach((order) => {
       if (order.hasOwnProperty("doubleDecker")) {
@@ -53,25 +48,32 @@ function BusFactoryUsage() {
 
     const doubleAmount = doubleDecker.getPeopleNumber();
     const doubleProfit = doubleAmount * doubleDecker.getTicketPrice();
-    setDoubleDeckerOrdersInfo({ peopleAmont: doubleAmount, profit: doubleProfit});
-    
+    doubleDeckerOrdersInfo = {
+      peopleAmount: doubleAmount,
+      profit: doubleProfit,
+    };
+
+
     const singleAmount = singleDecker.getPeopleNumber();
     const singleProfit = singleAmount * singleDecker.getTicketPrice();
-    setSingleDeckerOrdersInfo({ peopleAmont: singleAmount, profit: singleProfit});
+    singleDeckerOrdersInfo = {
+      peopleAmount: singleAmount,
+      profit: singleProfit,
+    };
 
 
-    setOrdersData([
+    ordersData = [
       ...ordersData,
       {
-        routeId: route.id,
+        id: route.id,
         routeNumber: route.routeNumber,
-        totalOrders: {
-          doubleDecker: doubleDeckerOrdersInfo,
-          singleDecker: singleDeckerOrdersInfo,
-        },
+        doubleDeckerPeopleAmount: doubleDeckerOrdersInfo.peopleAmount,
+        doubleDeckerProfitAmount: doubleDeckerOrdersInfo.profit, 
+        singleDeckerPeopleAmount: singleDeckerOrdersInfo.peopleAmount, 
+        singleDeckerProfitAmount: singleDeckerOrdersInfo.profit,
       },
-    ]);
+    ];
   }
 
-  return [ordersData];
+  return ordersData;
 }

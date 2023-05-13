@@ -1,4 +1,5 @@
-import { BorderQueueComponent, BusComposite } from "../Composite/Composite";
+import { BorderQueueComponent, BusComposite } from "../Composite/Composite.ts";
+
 
 export interface DoubleDecker extends BorderQueueComponent{
   capacity: number;
@@ -12,6 +13,7 @@ export interface SingleDecker extends BorderQueueComponent{
 
 class MegabusDoubleDecker extends BusComposite implements DoubleDecker {
 
+  private ticketPrice: number;
   private _capacity: number;
   
   public get capacity() : number {
@@ -22,10 +24,11 @@ class MegabusDoubleDecker extends BusComposite implements DoubleDecker {
     return this.ticketPrice;
   }
 
-  constructor(public ticketPrice: number = 0, private routeNumber?: string, 
+  constructor(ticketPrice: number = 0, private routeNumber?: string, 
     private departureDate?: string, private departureTime?: string, private destination?: string, private departureStation?: string, 
     private departurePlatform?: string, private arrivalStation?: string, private busBrand?: string, private travelTime?: string) {
       super();
+      this.ticketPrice = ticketPrice * 1.3;
       this._capacity = 40;
   }
 }
@@ -47,7 +50,7 @@ class ScaniaDoubleDecker extends BusComposite implements DoubleDecker {
     private departureDate?: string, private departureTime?: string, private destination?: string, private departureStation?: string, 
     private departurePlatform?: string, private arrivalStation?: string, private busBrand?: string, private travelTime?: string) {
       super();
-      this.ticketPrice = ticketPrice * 0,9;
+      this.ticketPrice = (ticketPrice * 1.3) * 0.9;
       this._capacity = 36;
   }
 
@@ -90,20 +93,20 @@ export interface BusFactory{
 
 
 export class MegabusFactory implements BusFactory {
-  public createDoubleDecker(): DoubleDecker {
-    return new MegabusDoubleDecker();
+  public createDoubleDecker(ticketPrice?: number): DoubleDecker {
+    return new MegabusDoubleDecker(ticketPrice);
   }
-  public createSingleDecker(): SingleDecker{
-    return new MegabusSingleDecker();
+  public createSingleDecker(ticketPrice?: number): SingleDecker{
+    return new MegabusSingleDecker(ticketPrice);
   }
 }
 
 export class ScaniaFactory implements BusFactory {
-  public createDoubleDecker(): DoubleDecker {
-    return new ScaniaDoubleDecker();
+  public createDoubleDecker(ticketPrice?: number): DoubleDecker {
+    return new ScaniaDoubleDecker(ticketPrice);
   }
-  public createSingleDecker(): SingleDecker{
-    return new ScaniaSingleDecker;
+  public createSingleDecker(ticketPrice?: number): SingleDecker{
+    return new ScaniaSingleDecker(ticketPrice);
   }
 }
 

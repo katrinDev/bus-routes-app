@@ -7,6 +7,8 @@ import { makeStyles } from "@mui/styles";
 import FilterListIcon from "@mui/icons-material/FilterList";
 import Snackbar from "@mui/material/Snackbar";
 import Alert from "@mui/material/Alert";
+import { busFactoryUsage } from "../AbstractFactory/BusFactoryUsage";
+import OrdersTable from "./OrdersTable";
 
 
 const defaultTheme = createTheme();
@@ -22,6 +24,7 @@ const useStyles = makeStyles(
         fontSize: "18px",
         fontWeight: "bold",
       },
+     
     },
   }),
   { defaultTheme }
@@ -54,7 +57,7 @@ const columns = [
   { field: "travelTime", headerName: "Travel Time", width: 130 },
 ];
 
-function MyTable() {
+function BusTable() {
   const [data, setData] = useState([]);
   const classes = useStyles();
   const [tabIndex, setTabIndex] = useState(0);
@@ -66,7 +69,7 @@ function MyTable() {
     severity: "error",
     message: "",
   });
-
+  const [ordersInfo, setOrdersInfo] = useState([]);
 
 
   const handleFileUpload = (event) => {
@@ -76,7 +79,10 @@ function MyTable() {
       reader.onload = (event) => {
         const jsonData = JSON.parse(event.target.result);
         setData(jsonData.buses);
+
         console.log(jsonData.buses);
+        //patterns usage
+        setOrdersInfo(busFactoryUsage(jsonData.buses));
       };
       reader.readAsText(file);
     } catch(error) {
@@ -133,6 +139,7 @@ function MyTable() {
           sx={{
             fontSize: "15px",
             fontWeight: "bold",
+            
             display: "block",
             textAlign: "center",
           }}
@@ -179,7 +186,7 @@ function MyTable() {
       <Box style={{ height: 600, width: "100%" }}>
         {tabIndex === 0 && (
           <DataGrid
-            className={classes.root}
+            classes={classes}
             rows={data}
             columns={columns.map((column) =>
               column.field === "departureDate"
@@ -207,6 +214,8 @@ function MyTable() {
           />
         )}
         {tabIndex === 1 && <pre>{JSON.stringify(data, null, 2)}</pre>}
+        {tabIndex === 2 && <OrdersTable data={ordersInfo}/>}
+
         {
         <Snackbar
           open={snackbarProps.open}
@@ -227,4 +236,4 @@ function MyTable() {
   );
 }
 
-export default MyTable;
+export default BusTable;
