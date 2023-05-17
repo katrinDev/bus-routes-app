@@ -1,0 +1,98 @@
+[
+  {
+    "id": 1,
+    "taskName": "Design UI",
+    "projectName": "Project A",
+    "laborIntensity": 8,
+    "plannedResource": 2,
+    "actualTimeSpent": 5
+  },
+  {
+    "id": 2,
+    "taskName": "Implement Backend",
+    "projectName": "Project B",
+    "laborIntensity": 16,
+    "plannedResource": 3,
+    "actualTimeSpent": 0
+  },
+  {
+    "id": 3,
+    "taskName": "Write Test Cases",
+    "projectName": "Project C",
+    "laborIntensity": 4,
+    "plannedResource": 1,
+    "actualTimeSpent": 3
+  },
+  {
+    "id": 4,
+    "taskName": "Create Database Schema",
+    "projectName": "Project A",
+    "laborIntensity": 6,
+    "plannedResource": 2,
+    "actualTimeSpent": 0
+  },
+  {
+    "id": 5,
+    "taskName": "Frontend Development",
+    "projectName": "Project B",
+    "laborIntensity": 12,
+    "plannedResource": 2,
+    "actualTimeSpent": 10
+  },
+  {
+    "id": 6,
+    "taskName": "Integration Testing",
+    "projectName": "Project C",
+    "laborIntensity": 8,
+    "plannedResource": 1,
+    "actualTimeSpent": 0
+  },
+  {
+    "id": 7,
+    "taskName": "Requirements Gathering",
+    "projectName": "Project D",
+    "laborIntensity": 10,
+    "plannedResource": 2,
+    "actualTimeSpent": 8
+  },
+  {
+    "id": 8,
+    "taskName": "Backend API Development",
+    "projectName": "Project D",
+    "laborIntensity": 20,
+    "plannedResource": 3,
+    "actualTimeSpent": 18
+  },
+  {
+    "id": 9,
+    "taskName": "Performance Testing",
+    "projectName": "Project D",
+    "laborIntensity": 6,
+    "plannedResource": 1,
+    "actualTimeSpent": 5
+  },
+  {
+    "id": 10,
+    "taskName": "Documentation",
+    "projectName": "Project E",
+    "laborIntensity": 8,
+    "plannedResource": 1,
+    "actualTimeSpent": 7
+  },
+  {
+    "id": 11,
+    "taskName": "Deployment",
+    "projectName": "Project E",
+    "laborIntensity": 4,
+    "plannedResource": 1,
+    "actualTimeSpent": 3
+  },
+  {
+    "id": 12,
+    "taskName": "Quality Assurance",
+    "projectName": "Project E",
+    "laborIntensity": 10,
+    "plannedResource": 2,
+    "actualTimeSpent": 9
+  }
+]

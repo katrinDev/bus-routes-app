@@ -7,7 +7,7 @@ const MyNavbar = () => {
     <AppBar position="static">
       <Toolbar>
         <Typography variant="h6" sx={{ flexGrow: 1 }}>
-          Bus Routes App
+          Working Time Manager
         </Typography>
       </Toolbar>
     </AppBar>

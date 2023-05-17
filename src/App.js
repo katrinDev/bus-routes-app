@@ -1,8 +1,8 @@
 import { useState } from "react";
-import BusTable from "./components/BusTable";
 import Layout from "./components/Layout";
 import "./styles/App.css";
 import { DataContext } from "./context/context";
+import TasksTable from "./components/TasksTable"
 
 function App() {
   const [data, setData] = useState([]);
@@ -15,7 +15,7 @@ function App() {
       }}
     >
       <Layout>
-        <BusTable/>
+        <TasksTable/>
       </Layout>
     </DataContext.Provider>
   );
