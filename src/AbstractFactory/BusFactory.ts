@@ -7,7 +7,7 @@ export interface DoubleDecker extends BorderQueueComponent{
   getTicketPrice(): number;
 }
 
-export interface SingleDecker extends BorderQueueComponent{
+export interface SingleDecker extends BorderQueueComponent {
   getTicketPrice(): number;
 }
 
